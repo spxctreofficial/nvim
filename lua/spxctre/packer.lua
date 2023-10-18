@@ -34,6 +34,7 @@ use("nvim-treesitter/playground")
 use("theprimeagen/harpoon") -- Quick file navigation
 use("mbbill/undotree") -- Undo history navigation
 use("tpope/vim-fugitive") -- Powerful Git integration
+
 use {'neoclide/coc.nvim', branch = 'release'}
 -- use({
     -- 	"VonHeikemen/lsp-zero.nvim",
