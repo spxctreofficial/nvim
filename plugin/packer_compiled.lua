@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/spxctre/.local/share/nvim/site/pack/packer/start/Omnisharp-vim",
     url = "https://github.com/OmniSharp/Omnisharp-vim"
   },
+  ale = {
+    loaded = true,
+    path = "/home/spxctre/.local/share/nvim/site/pack/packer/start/ale",
+    url = "https://github.com/dense-analysis/ale"
+  },
   ["coc.nvim"] = {
     loaded = true,
     path = "/home/spxctre/.local/share/nvim/site/pack/packer/start/coc.nvim",

@@ -40,6 +40,7 @@ return require("packer").startup(function(use)
         branch = 'release'
     })
     use('OmniSharp/Omnisharp-vim')
+    use('dense-analysis/ale') -- Custom linter that coc.nvim passes through
     -- use('Decodetalkers/csharpls-extended-lsp.nvim')
     -- use("m4xshen/autoclose.nvim") -- Auto close braces, parentheses, brackets, etc.
     use({

@@ -198,6 +198,5 @@ vim.g.coc_global_extensions = {
     'coc-tsserver',
     'coc-markdownlint',
     'coc-java',
-    'coc-omnisharp',
     'coc-clangd'
 }
