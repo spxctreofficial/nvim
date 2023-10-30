@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Omnisharp-vim"] = {
+    loaded = true,
+    path = "/home/spxctre/.local/share/nvim/site/pack/packer/start/Omnisharp-vim",
+    url = "https://github.com/OmniSharp/Omnisharp-vim"
+  },
   ["coc.nvim"] = {
     loaded = true,
     path = "/home/spxctre/.local/share/nvim/site/pack/packer/start/coc.nvim",

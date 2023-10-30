@@ -42,6 +42,12 @@ keyset("n", "]g", "<Plug>(coc-diagnostic-next)", { silent = true })
 
 -- GoTo code navigation
 keyset("n", "gd", "<Plug>(coc-definition)", { silent = true })
+vim.api.nvim_create_autocmd("BufEnter", { -- Custom go-to definition with Omnisharp for C# support
+    pattern = { "*.cs" },
+    callback = function()
+        keyset("n", "gd", "<Plug>(omnisharp_go_to_definition)")
+    end
+})
 keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
 keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
 keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
@@ -192,5 +198,6 @@ vim.g.coc_global_extensions = {
     'coc-tsserver',
     'coc-markdownlint',
     'coc-java',
+    'coc-omnisharp',
     'coc-clangd'
 }

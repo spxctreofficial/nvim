@@ -39,6 +39,8 @@ return require("packer").startup(function(use)
         'neoclide/coc.nvim',
         branch = 'release'
     })
+    use('OmniSharp/Omnisharp-vim')
+    -- use('Decodetalkers/csharpls-extended-lsp.nvim')
     -- use("m4xshen/autoclose.nvim") -- Auto close braces, parentheses, brackets, etc.
     use({
         "windwp/nvim-autopairs",
