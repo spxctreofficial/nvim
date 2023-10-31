@@ -38,11 +38,9 @@ return require("packer").startup(function(use)
     use({
         'neoclide/coc.nvim',
         branch = 'release'
-    })
-    use('OmniSharp/Omnisharp-vim')
-    use('dense-analysis/ale') -- Custom linter that coc.nvim passes through
-    -- use('Decodetalkers/csharpls-extended-lsp.nvim')
-    -- use("m4xshen/autoclose.nvim") -- Auto close braces, parentheses, brackets, etc.
+    })                             -- All-purpose LSP server
+    use('OmniSharp/Omnisharp-vim') -- OmniSharp LSP server
+    use('dense-analysis/ale')      -- Custom linter that coc.nvim passes through
     use({
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
