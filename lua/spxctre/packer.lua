@@ -46,4 +46,6 @@ return require("packer").startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     })                          -- Better auto-pairing braces, parentheses, brackets, etc.
     use("tpope/vim-commentary") -- Commenting out lines
+
+    use("lambdalisue/suda.vim") -- Enable sudo writing permissions
 end)
