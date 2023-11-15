@@ -32,7 +32,6 @@ vim.opt.updatetime = 50
 vim.api.nvim_create_autocmd("BufWinEnter", {
     pattern = "packer.lua",
     callback = function()
-        print("test the fuck!")
         vim.cmd.so()
         vim.cmd.PackerSync()
     end

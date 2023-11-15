@@ -99,8 +99,8 @@ vim.api.nvim_create_autocmd("User", {
 -- Apply codeAction to the selected region
 -- Example: `<leader>aap` for current paragraph
 local opts = { silent = true, nowait = true }
-keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
-keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
+-- keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
+-- keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
 
 -- Remap keys for apply code actions at the cursor position.
 keyset("n", "<leader>ac", "<Plug>(coc-codeaction-cursor)", opts)
@@ -183,6 +183,14 @@ vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}"
 --keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 ---- Resume latest coc list
 --keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+
+-- coc-markdownlint remaps
+vim.api.nvim_create_autocmd("BufWrite", {
+    pattern = { "*.md" },
+    callback = function()
+        vim.cmd.CocCommand('markdownlint.fixAll')
+    end
+})
 
 vim.g.coc_global_extensions = {
     'coc-lua',
