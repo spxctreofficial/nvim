@@ -77,7 +77,7 @@ keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
 
 -- Formatting selected code
 keyset("x", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
-keyset("n", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
+keyset("n", "<leader>f", "<Plug>(coc-format)", { silent = true })
 
 
 -- Setup formatexpr specified filetype(s)
@@ -104,6 +104,7 @@ local opts = { silent = true, nowait = true }
 
 -- Remap keys for apply code actions at the cursor position.
 keyset("n", "<leader>ac", "<Plug>(coc-codeaction-cursor)", opts)
+keyset("n", "<C-.>", "<Plug>(coc-codeaction-cursor)", opts)
 -- Remap keys for apply source code actions for current file.
 keyset("n", "<leader>as", "<Plug>(coc-codeaction-source)", opts)
 -- Apply the most preferred quickfix action on the current line.
@@ -185,6 +186,12 @@ vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}"
 --keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
 
 -- coc-markdownlint remaps
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*.md" },
+    callback = function()
+        keyset("n", "<leader>f", function() vim.cmd.CocCommand('markdownlint.fixAll') end)
+    end
+})
 vim.api.nvim_create_autocmd("BufWrite", {
     pattern = { "*.md" },
     callback = function()
