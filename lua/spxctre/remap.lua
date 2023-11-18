@@ -19,9 +19,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
--- This is going to get me cancelled
-vim.keymap.set("i", "<C-c>", "<Esc>")
-vim.keymap.set("i", "<F13>", "<Esc>")
+vim.keymap.set("i", "<F13>", "<Esc>") -- This is going to get be cancelled harder, I barely even use it
 
 vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
