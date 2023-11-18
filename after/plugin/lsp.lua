@@ -1,44 +1,79 @@
--- local lsp = require("lsp-zero")
--- local mason = require("mason")
+local cmp = require('cmp')
+local lsp = require('lspconfig')
+local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
+local mason = require('mason')
+local mason_lsp = require('mason-lspconfig')
+local mason_installer = require('mason-tool-installer')
 
--- lsp.preset("recommended")
+local cmp_mappings = {
+    ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-n>'] = cmp.mapping.abort(),
+    ['<C-Space>'] = cmp.mapping.complete(),
+}
+-- Use Neovim's built-in LSP and buffer source for autocomplete.
+cmp.setup({
+    mapping = cmp_mappings,
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'buffer' },
+    }
+})
+-- Use buffer source for `/` and `?` autocomplete.
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp_mappings,
+    sources = {
+        { name = 'buffer' }
+    }
+})
+-- Use cmdline & path source for ':' autocomplete.
+cmp.setup.cmdline(':', {
+    mapping = cmp_mappings,
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    })
+})
 
--- local cmp = require("cmp")
--- local cmp_action = lsp.cmp_action()
+vim.diagnostic.config({
+    update_in_insert = true,
+})
+local function lsp_attach(bufnr)
+    local opts = { buffer = bufnr, remap = false }
+    vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts) -- Go-to defiinition
+    vim.keymap.set('n', '<leader>f', function()
+        vim.lsp.buf.format()
+    end, opts) -- Code formatting
+end
 
--- cmp.setup({
--- 	window = {
--- 		completion = cmp.config.window.bordered(),
--- 		documentation = cmp.config.window.bordered(),
--- 	},
--- 	mapping = cmp.mapping.preset.insert({
--- 		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
--- 		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
--- 		['<C-y>'] = cmp.mapping.confirm({ select = true }),
--- 		['<C-Space>'] = cmp.mapping.complete(),
--- 	})
--- })
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        lsp_attach(args.buf) -- Key mappings when an LSP is attached to a buffer.
+    end
+})
 
--- lsp.set_preferences({
--- 	sign_icons = { }
--- })
+-- Language server package management.
+mason.setup()
+mason_lsp.setup({
+    handlers = {
+        function(server_name) -- Automatically sets up LSP language servers with autocomplete support.
+            lsp[server_name].setup({
+                capabilities = cmp_capabilities
+            })
+        end
+    }
 
--- lsp.on_attach(function(client, bufnr)
--- 	print("help")
--- 	local opts = {buffer = bufnr, remap = false}
-
--- 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
--- 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
--- 	vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
--- 	vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
--- 	vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
--- 	vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
--- 	vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
--- 	vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
--- 	vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
--- 	vim.keymap.set("n", "C-h", function() vim.lsp.buf.signature_help() end, opts)
--- end)
-
--- lsp.setup()
--- mason.setup()
+})
+mason_installer.setup({ -- Default language servers and formatters.
+    ensure_installed = {
+        'lua_ls',
+        'stylua',
+        'clangd',
+        'clang-format',
+    }
+})

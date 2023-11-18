@@ -1,8 +1,0 @@
-{
-    "coc.preferences.formatOnType": true,
-    "coc.preferences.formatOnSave": true,
-    "diagnostic.displayByAle": true,
-    "Lua.diagnostics.globals": [
-        "vim"
-    ]
-}

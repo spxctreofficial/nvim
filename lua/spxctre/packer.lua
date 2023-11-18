@@ -23,30 +23,41 @@ return require("packer").startup(function(use)
         as = "rose-pine",
     })
 
-    use({ -- use powerline
-        "nvim-lualine/lualine.nvim",
-        requires = { "nvim-tree/nvim-web-devicons", opt = true },
+    use({
+        'nvim-lualine/lualine.nvim',
+        requires = {
+            'nvim-tree/nvim-web-devicons'
+        }
     })
 
     use( -- Syntax highlighting
         "nvim-treesitter/nvim-treesitter",
         { run = ":TSUpdate" }
     )
-    use("nvim-treesitter/playground")
-    use("theprimeagen/harpoon") -- Quick file navigation
-    use("mbbill/undotree")      -- Undo history navigation
-    use("tpope/vim-fugitive")   -- Powerful Git integration
 
+    use('neovim/nvim-lspconfig') -- LSP Support
     use({
-        'neoclide/coc.nvim',
-        branch = 'release'
-    })                             -- All-purpose LSP server
-    use('OmniSharp/Omnisharp-vim') -- OmniSharp LSP server
-    use('dense-analysis/ale')      -- Custom linter that coc.nvim passes through
-    use({
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    })                          -- Better auto-pairing braces, parentheses, brackets, etc.
+        'hrsh7th/nvim-cmp',  -- LSP autocompletion.
+        requires = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+        } -- Integration for LSP, cmdline, and buffer source, etc.
+    })
+    use('dense-analysis/ale')
+    use('williamboman/mason.nvim')               -- Language server manager
+    use('williamboman/mason-lspconfig.nvim')     -- LSP integration with mason.nvim
+    use('WhoIsSethDaniel/mason-tool-installer.nvim') -- Language server installer for mason.nvim
+
+    use("theprimeagen/harpoon")                  -- Quick file navigation
+    use("mbbill/undotree")                       -- Undo history navigation
+    use("tpope/vim-fugitive")                    -- Powerful Git integration
+
+    -- use({
+    --     "windwp/nvim-autopairs",
+    --     config = function() require("nvim-autopairs").setup {} end
+    -- })                          -- Better auto-pairing braces, parentheses, brackets, etc.
     use("tpope/vim-commentary") -- Commenting out lines
 
     use("lambdalisue/suda.vim") -- Enable sudo writing permissions

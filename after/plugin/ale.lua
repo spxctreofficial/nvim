@@ -1,3 +1,1 @@
-vim.g.ale_linters = {
-    ['cs'] = 'OmniSharp',
-}
+vim.g.ale_disable_lsp = 'auto'
