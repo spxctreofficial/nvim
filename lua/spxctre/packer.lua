@@ -43,9 +43,12 @@ return require("packer").startup(function(use)
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+            'weilbith/nvim-code-action-menu',
         } -- Integration for LSP, cmdline, and buffer source, etc.
     })
-    use('dense-analysis/ale')
+    use('folke/neodev.nvim')
     use('williamboman/mason.nvim')               -- Language server manager
     use('williamboman/mason-lspconfig.nvim')     -- LSP integration with mason.nvim
     use('WhoIsSethDaniel/mason-tool-installer.nvim') -- Language server installer for mason.nvim
