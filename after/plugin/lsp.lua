@@ -105,5 +105,7 @@ mason_installer.setup({ -- Default language servers and formatters.
     ensure_installed = {
         'clangd',
         'clang-format',
+        'lua_ls',
+        'jdtls',
     }
 })
