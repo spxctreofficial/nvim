@@ -1,4 +1,5 @@
 local cmp = require('cmp')
+local lint = require('lint')
 local lsp = require('lspconfig')
 local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -84,23 +85,13 @@ mason_lsp.setup({
                 capabilities = cmp_capabilities,
             })
         end,
-        ['lua_ls'] = function()
-            lsp['lua_ls'].setup({
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            workspaceDelay = '100',
-                            workspaceEvent = 'OnChange'
-                        },
-                        completion = {
-                            callSnippet = "Replace"
-                        }
-                    }
-                }
-            })
-        end
     }
 })
+lint.linters_by_ft = {
+    lua = {
+    }
+}
+
 mason_installer.setup({ -- Default language servers and formatters.
     ensure_installed = {
         'clangd',

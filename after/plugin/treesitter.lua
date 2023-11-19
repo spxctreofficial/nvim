@@ -1,6 +1,6 @@
 -- LSP spits out a fuck ton of errors.
+---@diagnostic disable-next-line: missing-fields
 require('nvim-treesitter.configs').setup {
-    -- A list of parser names, or "all" (the five listed parsers should always be installed)treesitter
     ensure_installed = { "c", "cpp", "c_sharp", "java", "dart", "javascript", "typescript", "lua", "vim", "vimdoc",
         "query" },
 
