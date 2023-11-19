@@ -1,5 +1,6 @@
-require 'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or "all" (the five listed parsers should always be installed)
+-- LSP spits out a fuck ton of errors.
+require('nvim-treesitter.configs').setup {
+    -- A list of parser names, or "all" (the five listed parsers should always be installed)treesitter
     ensure_installed = { "c", "cpp", "c_sharp", "java", "dart", "javascript", "typescript", "lua", "vim", "vimdoc",
         "query" },
 

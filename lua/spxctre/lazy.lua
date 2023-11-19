@@ -25,9 +25,7 @@ local plugins = {
     },
     {
         'nvim-treesitter/nvim-treesitter',
-         config = function()
-             vim.cmd.TSUpdate()
-         end
+        build = ":TSUpdate"
     },
     'neovim/nvim-lspconfig', -- LSP Support
     {
@@ -43,13 +41,18 @@ local plugins = {
         } -- Integration for LSP, cmdline, and buffer source, etc.
     },
     'folke/neodev.nvim',
-    'williamboman/mason.nvim',               -- Language server manager
-    'williamboman/mason-lspconfig.nvim',     -- LSP integration with mason.nvim
-    'WhoIsSethDaniel/mason-tool-installer.nvim', -- Language server installer for mason.nvim
+    {
+        'williamboman/mason.nvim',
+        dependencies = {
+            'williamboman/mason-lspconfig.nvim',        -- LSP integration
+            'mfussenegger/nvim-lint',                   -- Linter integration
+            'WhoIsSethDaniel/mason-tool-installer.nvim' -- Mason installer
+        }
+    },                                                  -- Language server manager
 
-    'theprimeagen/harpoon',                  -- Quick file navigation
-    'mbbill/undotree',                       -- Undo history navigation
-    'tpope/vim-fugitive',                    -- Powerful Git integration
+    'theprimeagen/harpoon',                             -- Quick file navigation
+    'mbbill/undotree',                                  -- Undo history navigation
+    'tpope/vim-fugitive',                               -- Powerful Git integration
 
     -- use({
     --     "windwp/nvim-autopairs",
@@ -62,4 +65,3 @@ local plugins = {
 local opts = {}
 
 lazy.setup(plugins, opts)
-
