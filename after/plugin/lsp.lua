@@ -98,5 +98,6 @@ mason_installer.setup({ -- Default language servers and formatters.
         'clang-format',
         'lua_ls',
         'jdtls',
+        'omnisharp',
     }
 })
