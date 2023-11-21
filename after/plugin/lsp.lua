@@ -85,6 +85,9 @@ mason_lsp.setup({
                 capabilities = cmp_capabilities,
             })
         end,
+        ['rust_analyzer'] = function()
+            require('rust-tools').setup({})
+        end
     }
 })
 lint.linters_by_ft = {

@@ -44,15 +44,18 @@ local plugins = {
     {
         'williamboman/mason.nvim',
         dependencies = {
-            'williamboman/mason-lspconfig.nvim',        -- LSP integration
-            'mfussenegger/nvim-lint',                   -- Linter integration
-            'WhoIsSethDaniel/mason-tool-installer.nvim' -- Mason installer
-        }
-    },                                                  -- Language server manager
+            'williamboman/mason-lspconfig.nvim',         -- LSP integration
+            'mfussenegger/nvim-lint',                    -- Linter integration
+            'WhoIsSethDaniel/mason-tool-installer.nvim', -- Mason installer
 
-    'theprimeagen/harpoon',                             -- Quick file navigation
-    'mbbill/undotree',                                  -- Undo history navigation
-    'tpope/vim-fugitive',                               -- Powerful Git integration
+            'simrat39/rust-tools.nvim'                   -- LSP integration (Rust)
+
+        }
+    },                      -- Language server manager
+
+    'theprimeagen/harpoon', -- Quick file navigation
+    'mbbill/undotree',      -- Undo history navigation
+    'tpope/vim-fugitive',   -- Powerful Git integration
 
     -- use({
     --     "windwp/nvim-autopairs",
