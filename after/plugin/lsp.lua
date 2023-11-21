@@ -97,6 +97,7 @@ lint.linters_by_ft = {
 
 mason_installer.setup({ -- Default language servers and formatters.
     ensure_installed = {
+        'rust_analyzer',
         'clangd',
         'clang-format',
         'lua_ls',
