@@ -34,27 +34,31 @@ local plugins = {
     {
         'hrsh7th/nvim-cmp',  -- LSP autocompletion.
         dependencies = {
+            -- Autocomplete sources
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
-            'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
+            'L3MON4D3/LuaSnip',
             'weilbith/nvim-code-action-menu',
-        } -- Integration for LSP, cmdline, and buffer source, etc.
+
+            -- LSP Integration (Rust)
+            'simrat39/rust-tools.nvim',
+            -- LSP Integration (Neovim dotfiles)
+            'folke/neodev.nvim',
+        }
     },
-    'folke/neodev.nvim',
     {
         'williamboman/mason.nvim',
         dependencies = {
-            'williamboman/mason-lspconfig.nvim',         -- LSP integration
-            'mfussenegger/nvim-lint',                    -- Linter integration
+            'williamboman/mason-lspconfig.nvim',         -- LSP integration for mason.nvim
+            'mfussenegger/nvim-lint',                    -- Linter integration for mason.nvim
             'WhoIsSethDaniel/mason-tool-installer.nvim', -- Mason installer
 
-            'simrat39/rust-tools.nvim'                   -- LSP integration (Rust)
 
         }
-    },                      -- Language server manager
+    },
 
     'theprimeagen/harpoon', -- Quick file navigation
     'mbbill/undotree',      -- Undo history navigation
@@ -65,6 +69,17 @@ local plugins = {
     --     config = function() require("nvim-autopairs").setup {} end
     -- })                          -- Better auto-pairing braces, parentheses, brackets, etc.
     'tpope/vim-commentary', -- Commenting out lines
+
+    {
+        'gaoDean/autolist.nvim', -- Autocomplete lists
+        ft = {
+            'markdown',
+            'text',
+            'tex',
+            'plaintex',
+            'norg',
+        },
+    },
 
     'lambdalisue/suda.vim', -- Enable sudo writing permissions
 }

@@ -17,7 +17,6 @@ local cmp_mappings = {
     ['<C-n>'] = cmp.mapping.abort(),
     ['<C-Space>'] = cmp.mapping.complete(),
 }
-
 -- Use Neovim's built-in LSP and buffer source for autocomplete.
 cmp.setup({
     snippet = {
@@ -48,10 +47,10 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     })
 })
-
 vim.diagnostic.config({
     update_in_insert = true,
 })
+
 local function lsp_attach(bufnr)
     local opts = { buffer = bufnr, remap = false }
     vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
@@ -67,7 +66,6 @@ local function lsp_attach(bufnr)
         vim.diagnostic.enable(0)
     end, opts) -- Code formatting
 end
-
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         lsp_attach(args.buf) -- Key mappings when an LSP is attached to a buffer.

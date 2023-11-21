@@ -1,14 +1,25 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+-- Moving selected line
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
+
+-- Centered half-page jumps
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+-- Why the fuck is Shift-Enter random by default
+vim.keymap.set('n', '<S-CR>', 'k')
+
+-- Insert a new line without entering insert mode
+vim.keymap.set('n', '<leader><CR>', 'o<Esc>')
+vim.keymap.set('n', '<leader><S-CR>', 'O<Esc>')
 
 -- Write-quit to netrw instead of exiting neovim
 vim.keymap.set("n", "<leader>w", function()
