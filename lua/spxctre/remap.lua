@@ -10,6 +10,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- Write-quit to netrw instead of exiting neovim
+vim.keymap.set("n", "<leader>w", function()
+    vim.cmd.w();
+    vim.cmd.Ex();
+end)
+
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
