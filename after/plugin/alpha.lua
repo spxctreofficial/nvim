@@ -115,11 +115,11 @@ local buttons = {
 }
 
 local section = {
-    header = default_header,
+    header   = default_header,
     terminal = default_terminal,
-    art  = ahegao_header,
-    buttons = buttons,
-    footer = footer,
+    art      = ahegao_header,
+    buttons  = buttons,
+    footer   = footer,
 }
 
 local config = {
@@ -162,7 +162,8 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'filetype' }, {
             vim.cmd.bd(args.buf)
             vim.cmd.Ex()
         end
+        local opts = { buffer = args.buf, remap = false }
 
-        vim.keymap.set({ 'n', 't' }, '<leader>pv', enter)
+        vim.keymap.set({ 'n', 't' }, '<leader>pv', enter, opts)
     end
 })
