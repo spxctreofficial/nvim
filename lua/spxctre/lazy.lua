@@ -34,6 +34,7 @@ local plugins = {
     {
         'hrsh7th/nvim-cmp',  -- LSP autocompletion.
         dependencies = {
+            'nvimtools/none-ls.nvim', -- Linter + Formatters for LSP
             -- Autocomplete sources
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
@@ -53,7 +54,6 @@ local plugins = {
         'williamboman/mason.nvim',
         dependencies = {
             'williamboman/mason-lspconfig.nvim',         -- LSP integration for mason.nvim
-            'mfussenegger/nvim-lint',                    -- Linter integration for mason.nvim
             'WhoIsSethDaniel/mason-tool-installer.nvim', -- Mason installer
 
 
