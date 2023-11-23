@@ -18,12 +18,18 @@ local cmp_mappings = {
     ['<C-Space>'] = cmp.mapping.complete(),
 }
 -- Use Neovim's built-in LSP and buffer source for autocomplete.
+---@diagnostic disable-next-line: missing-fields
 cmp.setup({
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body)
         end
     },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered()
+    },
+
     mapping = cmp_mappings,
     sources = {
         { name = 'nvim_lsp' },
@@ -32,6 +38,7 @@ cmp.setup({
     }
 })
 -- Use buffer source for `/` and `?` autocomplete.
+---@diagnostic disable-next-line: missing-fields
 cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp_mappings,
     sources = {
@@ -39,6 +46,7 @@ cmp.setup.cmdline({ '/', '?' }, {
     }
 })
 -- Use cmdline & path source for ':' autocomplete.
+---@diagnostic disable-next-line: missing-fields
 cmp.setup.cmdline(':', {
     mapping = cmp_mappings,
     sources = cmp.config.sources({
