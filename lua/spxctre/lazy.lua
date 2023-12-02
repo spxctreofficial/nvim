@@ -58,7 +58,10 @@ local plugins = {
         },
     },
 
-    "theprimeagen/harpoon", -- Quick file navigation
+    {
+        "theprimeagen/harpoon",
+        branch = "harpoon2",
+    }, -- Quick file navigation
     "mbbill/undotree",   -- Undo history navigation
     "tpope/vim-fugitive", -- Powerful Git integration
 
