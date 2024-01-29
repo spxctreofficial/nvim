@@ -16,6 +16,9 @@ local plugins = {
         "rose-pine/neovim", -- uwu
         name = "rose-pine",
     },
+    {
+        "xiyaowong/transparent.nvim"
+    },
 
     {
         "goolord/alpha-nvim",
