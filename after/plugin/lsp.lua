@@ -26,7 +26,6 @@ local cmp_mappings = {
 cmp.setup({
     snippet = {
         expand = function(args)
-            require("luasnip").lsp_expand(args.body)
         end,
     },
     window = {
@@ -37,7 +36,6 @@ cmp.setup({
     mapping = cmp_mappings,
     sources = {
         { name = "nvim_lsp" },
-        { name = "luasnip" },
         { name = "buffer" },
     },
 })
