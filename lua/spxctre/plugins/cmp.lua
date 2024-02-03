@@ -8,8 +8,6 @@ return {
         "hrsh7th/cmp-cmdline",
         "weilbith/nvim-code-action-menu",
 
-        -- LSP Integration (Rust)
-        "simrat39/rust-tools.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function(_, opts)
