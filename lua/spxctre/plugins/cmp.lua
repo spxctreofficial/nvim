@@ -85,7 +85,7 @@ return {
             vim.keymap.set("n", "<leader>k", function()
                 vim.diagnostic.goto_prev()
             end, opts)
-            vim.keymap.set("n", "<C-.>", function()
+            vim.keymap.set("n", "<leader>.", function()
                 vim.cmd.CodeActionMenu()
             end, opts)
             vim.keymap.set("n", "<leader>f", function()
