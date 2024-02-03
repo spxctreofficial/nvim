@@ -1,18 +1,25 @@
 return {
-    "williamboman/mason-lspconfig.nvim",
-    event = "VeryLazy",
-    opts = {
+    "neovim/nvim-lspconfig", -- LSP Support
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+        "simrat39/rust-tools.nvim",
+        "folke/neodev.nvim",
+        "mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "hrsh7th/cmp-nvim-lsp",
+    },
+    config = function(_, opts)
+        local lsp = require('lspconfig')
+        local mlsp = require('mason-lspconfig')
+        mlsp.setup({
             handlers = {
                 function(server_name) -- Automatically sets up LSP language servers with autocomplete support.
                     lsp[server_name].setup({
-                        capabilities = cmp_capabilities,
+                        capabilities = require('cmp_nvim_lsp').cmp_capabilities,
                     })
                 end,
-                ["rust_analyzer"] = function()
-                    require("rust-tools").setup({})
-                end,
-                ["jdtls"] = function()
-                    lsp.jdtls.setup({})
+                ['rust_analyzer'] = function()
+                    require('rust-tools').setup()
                 end,
                 -- ["html"] = function()
                 --     lsp["html"].setup({
@@ -34,6 +41,6 @@ return {
                 --     })
                 -- end,
             },
-        },
-        config = true,
+        })
+    end
 }
