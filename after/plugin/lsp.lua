@@ -121,6 +121,9 @@ mason_lsp.setup({
         ["rust_analyzer"] = function()
             require("rust-tools").setup({})
         end,
+        ["jdtls"] = function()
+            lsp.jdtls.setup({})
+        end,
         -- ["html"] = function()
         --     lsp["html"].setup({
         --         filetypes = {

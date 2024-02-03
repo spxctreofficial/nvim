@@ -43,7 +43,7 @@ require('rose-pine').setup({
 
     styles = {
         bold = true,
-        italic = true,
+        italic = false,
         transparency = true,
     },
 
@@ -127,4 +127,3 @@ function SaveYourEyes()
 end
 
 Waifu()
-vim.api.nvim_set_hl(0, "@variable.builtin", { italic = false })

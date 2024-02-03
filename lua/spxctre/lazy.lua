@@ -7,17 +7,21 @@ local plugins = {
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
+        event = "VeryLazy",
     },
     {
         "rebelot/kanagawa.nvim",
         name = "kanagawa",
+        event = "VeryLazy",
     },
     {
         "rose-pine/neovim", -- uwu
         name = "rose-pine",
+        event = "VeryLazy",
     },
     {
-        "xiyaowong/transparent.nvim"
+        "xiyaowong/transparent.nvim",
+        event = "VeryLazy",
     },
 
     {
@@ -28,12 +32,17 @@ local plugins = {
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
+        event = "VeryLazy",
     },
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
+        event = "VeryLazy",
     },
-    "neovim/nvim-lspconfig", -- LSP Support
+    {
+        "neovim/nvim-lspconfig", -- LSP Support
+        event = { "BufReadPre", "BufNewFile" },
+    },
     {
         "hrsh7th/nvim-cmp",  -- LSP autocompletion.
         dependencies = {
@@ -52,6 +61,7 @@ local plugins = {
             -- LSP Integration (Neovim dotfiles)
             "folke/neodev.nvim",
         },
+        event = { "BufReadPre", "BufNewFile" },
     },
     {
         "williamboman/mason.nvim",
@@ -59,22 +69,31 @@ local plugins = {
             "williamboman/mason-lspconfig.nvim", -- LSP integration for mason.nvim
             "WhoIsSethDaniel/mason-tool-installer.nvim", -- Mason installer
         },
+        event = "VeryLazy",
     },
-
     {
         "theprimeagen/harpoon",
         branch = "harpoon2",
+        event = "VeryLazy",
     }, -- Quick file navigation
-    "mbbill/undotree",   -- Undo history navigation
-    "tpope/vim-fugitive", -- Powerful Git integration
+    {
+        "mbbill/undotree",   -- Undo history navigation
+        event = "VeryLazy",
+    },
+    -- "tpope/vim-fugitive", -- Powerful Git integration
 
     -- use({
     --     "windwp/nvim-autopairs",
     --     config = function() require("nvim-autopairs").setup {} end
     -- })                          -- Better auto-pairing braces, parentheses, brackets, etc.
-    "tpope/vim-commentary", -- Commenting out lines
-    "smjonas/inc-rename.nvim",
-
+    {
+        "tpope/vim-commentary", -- Commenting out lines
+        event = "VeryLazy",
+    },
+    {
+        "smjonas/inc-rename.nvim",
+        event = "VeryLazy",
+    },
     {
         "gaoDean/autolist.nvim", -- Autocomplete lists
         ft = {
@@ -84,6 +103,7 @@ local plugins = {
             "plaintex",
             "norg",
         },
+        event = "VeryLazy",
     },
     {
         "iamcco/markdown-preview.nvim",
@@ -92,10 +112,20 @@ local plugins = {
         build = function()
             vim.fn["mkdp#util#install"]()
         end,
+        event = "VeryLazy",
     },
 
-    "lambdalisue/suda.vim", -- Enable sudo writing permissions
+    {
+        "lambdalisue/suda.vim", -- Enable sudo writing permissions
+        event = "VeryLazy",
+    }
 }
-local opts = {}
+local opts = {
+    install = {},
+    defaults = { lazy = true },
+    checker = { enabled = true, notify = false },
+    debug = false,
+    ui = { border = "rounded" }
+}
 
 lazy.setup(plugins, opts)
