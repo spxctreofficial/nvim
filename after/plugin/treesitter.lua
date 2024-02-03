@@ -1,5 +1,6 @@
-require 'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or "all" (the five listed parsers should always be installed)
+-- LSP spits out a fuck ton of errors.
+---@diagnostic disable-next-line: missing-fields
+require('nvim-treesitter.configs').setup {
     ensure_installed = { "c", "cpp", "c_sharp", "java", "dart", "javascript", "typescript", "lua", "vim", "vimdoc",
         "query" },
 
@@ -8,7 +9,7 @@ require 'nvim-treesitter.configs'.setup {
 
     -- Automatically install missing parsers when entering buffer
     -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-    auto_install = true,
+    auto_install = false,
 
 
     highlight = {

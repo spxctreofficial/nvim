@@ -1,4 +1,4 @@
-# vim.opt.guicursor = ""
+vim.opt.guicursor = ""
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -26,20 +26,3 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 -- vim.opt.colorcolumn = "80"
-
-
--- packer.nvim quality-of-life
-vim.api.nvim_create_autocmd("BufWinEnter", {
-    pattern = "packer.lua",
-    callback = function()
-        vim.cmd.so()
-        vim.cmd.PackerSync()
-    end
-})
-vim.api.nvim_create_autocmd("BufWrite", {
-    pattern = "packer.lua",
-    callback = function()
-        vim.cmd.so()
-        vim.cmd.PackerSync()
-    end
-})
