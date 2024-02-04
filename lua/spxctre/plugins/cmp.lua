@@ -9,7 +9,7 @@ return {
         "weilbith/nvim-code-action-menu",
 
     },
-    event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     config = function(_, opts)
         local cmp = require("cmp")
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
