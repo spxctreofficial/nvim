@@ -21,6 +21,11 @@ return {
                 ['rust_analyzer'] = function()
                     require('rust-tools').setup()
                 end,
+                ['jdtls'] = function()
+                    lsp.jdtls.setup({
+                        capabilities = require('cmp_nvim_lsp').cmp_capabilities,
+                    })
+                end,
                 -- ["html"] = function()
                 --     lsp["html"].setup({
                 --         filetypes = {
