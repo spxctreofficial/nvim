@@ -8,7 +8,8 @@ return {
     opts = {
         ui = {
             border = "rounded",
-        }
+        },
+        PATH = "append",
     },
     config = true
 }
