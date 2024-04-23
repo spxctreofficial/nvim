@@ -22,6 +22,7 @@ return {
             ["<C-n>"] = cmp.mapping.abort(),
             ["<C-Space>"] = cmp.mapping.complete(),
         }
+
         -- Use Neovim's built-in LSP and buffer source for autocomplete.
         ---@diagnostic disable-next-line: missing-fields
         cmp.setup({
