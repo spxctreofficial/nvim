@@ -6,14 +6,6 @@ return {
     },
     event = "VeryLazy",
     opts = {
-        ensure_installed = {
-            "rust_analyzer",
-            "clangd",
-            "clang-format",
-            "lua_ls",
-            "jdtls",
-            "omnisharp",
-        },
         ui = {
             border = "rounded",
         }

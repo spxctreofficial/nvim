@@ -12,6 +12,13 @@ return {
         local lsp = require('lspconfig')
         local mlsp = require('mason-lspconfig')
         mlsp.setup({
+            ensure_installed = {
+                "rust_analyzer",
+                "clangd",
+                "clang-format",
+                "lua_ls",
+                "jdtls",
+            },
             handlers = {
                 function(server_name) -- Automatically sets up LSP language servers with autocomplete support.
                     lsp[server_name].setup({
