@@ -11,10 +11,12 @@ return {
     config = function(_, opts)
         local lsp = require('lspconfig')
         local mlsp = require('mason-lspconfig')
+        lsp.ccls.setup({
+
+        })
         mlsp.setup({
             ensure_installed = {
                 "rust_analyzer",
-                "clangd",
                 "lua_ls",
                 "jdtls",
             },
