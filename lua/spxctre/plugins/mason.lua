@@ -9,7 +9,7 @@ return {
         ui = {
             border = "rounded",
         },
-        PATH = "append",
+        PATH = "append", -- This option forces Neovim's LSP to prefer system binaries instead of those provided by Mason for more compatibility
     },
     config = true
 }
