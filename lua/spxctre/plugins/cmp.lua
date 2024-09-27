@@ -17,6 +17,8 @@ return {
         local cmp_mappings = {
             ["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
             ["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
+            ["<S-Tab>"] = cmp.mapping.select_prev_item(cmp_select),
+            ["<Tab>"] = cmp.mapping.select_next_item(cmp_select),
             ["<C-y>"] = cmp.mapping.confirm({ select = true }),
             ["<CR>"] = cmp.mapping.confirm({ select = true }),
             ["<C-n>"] = cmp.mapping.abort(),
@@ -28,6 +30,7 @@ return {
         cmp.setup({
             snippet = {
                 expand = function(args)
+                    vim.snippet.expand(args.body)
                 end,
             },
             window = {
@@ -63,41 +66,5 @@ return {
             update_in_insert = true,
         })
 
-        local function lsp_attach(bufnr)
-            local opts = { buffer = bufnr, remap = false }
-            vim.keymap.set("n", "K", function()
-                vim.lsp.buf.hover()
-            end, opts)
-            vim.keymap.set("n", "gd", function()
-                vim.lsp.buf.definition()
-            end, opts)
-            vim.keymap.set("n", "gi", function()
-                vim.lsp.buf.implementation()
-            end, opts)
-            vim.keymap.set("n", "gr", function()
-                vim.lsp.buf.references()
-            end, opts)
-            vim.keymap.set("n", "<C-R>", function()
-                vim.lsp.buf.rename()
-            end, opts)
-            vim.keymap.set("n", "<leader>j", function()
-                vim.diagnostic.goto_next()
-            end, opts)
-            vim.keymap.set("n", "<leader>k", function()
-                vim.diagnostic.goto_prev()
-            end, opts)
-            vim.keymap.set("n", "<leader>.", function()
-                vim.cmd.CodeActionMenu()
-            end, opts)
-            vim.keymap.set("n", "<leader>f", function()
-                vim.lsp.buf.format()
-                vim.diagnostic.enable(0)
-            end, opts) -- Code formatting
-        end
-        vim.api.nvim_create_autocmd("LspAttach", {
-            callback = function(args)
-                lsp_attach(args.buf) -- Key mappings when an LSP is attached to a buffer.
-            end,
-        })
     end
 }
