@@ -2,8 +2,12 @@ return {
     "rose-pine/neovim",     -- uwu
     name = "rose-pine",
     priority = 1000,
+    event = "VimEnter",
+    dependencies = {
+        "xiyaowong/transparent.nvim"
+    },
     opts = {
-        variant = "main",      -- auto, main, moon, or dawn
+        variant = "auto",      -- auto, main, moon, or dawn
         dark_variant = "main", -- main, moon, or dawn
         dim_inactive_windows = false,
         extend_background_behind_borders = false,
@@ -11,7 +15,7 @@ return {
         styles = {
             bold = true,
             italic = false,
-            transparency = true,
+            transparency = vim.g.transparent_enabled,
         },
 
         groups = {
