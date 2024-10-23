@@ -19,5 +19,7 @@ return {
     config = function(_, opts)
         require("transparent").setup(opts)
         require("transparent").clear_prefix('lualine')
+
+        vim.g.transparent_enabled = true
     end
 }
