@@ -12,7 +12,9 @@ return {
     config = function(_, opts)
         local lsp = require('lspconfig')
         local mlsp = require('mason-lspconfig')
+        local cmp_lsp = require('cmp_nvim_lsp')
 
+        -- Theming
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
             vim.lsp.handlers.hover, {
                 border = "rounded"
@@ -29,6 +31,7 @@ return {
             }
         })
 
+        -- Language Servers
         vim.api.nvim_create_autocmd("FileType", {
             pattern = "java",
             callback = function()
@@ -41,42 +44,85 @@ return {
                 jdtls.start_or_attach(config)
             end
         })
+        lsp.ts_ls.setup {
+            init_options = {
+                plugins = {
+                    name = '@vue/typescript-plugin',
+                    location = '/usr/local/lib/node_modules/@vue/typescript-plugin',
+                    languages = {
+                        'vue'
+                    },
+                },
+            },
+            filetypes = {
+                'javascript',
+                'typescript',
+                'javascriptreact',
+                'typescriptreact',
+                'vue',
+            },
+            capabilities = cmp_lsp.cmp_capabilities,
+        }
+        lsp.volar.setup {
+            capabilities = cmp_lsp.cmp_capabilities,
+        }
+        lsp.eslint.setup {
+            on_attach = function(_, bufnr)
+                vim.api.nvim_create_autocmd("BufWritePre", {
+                    buffer = bufnr,
+                    command = "EslintFixAll",
+                })
+            end,
+            capabilities = cmp_lsp.cmp_capabilities,
+        }
+
+        lsp.clangd.setup {
+            capabilities = cmp_lsp.cmp_capabilities,
+        }
+
+        lsp.lua_ls.setup {
+            on_init = function(client)
+                if client.workspace_folders then
+                    local path = client.workspace_folders[1].name
+                    if vim.uv.fs_stat(path..'/.luarc.json') or vim.uv.fs_stat(path..'/.luarc.jsonc') then
+                        return
+                    end
+                end
+
+                client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                    runtime = {
+                        -- Tell the language server the version of Lua you're using
+                        -- This is most likely LuaJIT for Neovim config
+                        version = 'LuaJIT'
+                    },
+                    -- Make the server aware of Neovim runtime filetypes
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME,
+                            -- Depending on the usage, you might want to add additional paths here
+                        }
+                    },
+                })
+            end,
+            settings = {
+                Lua = {}
+            }
+        }
         mlsp.setup({
             ensure_installed = {
                 "rust_analyzer",
                 "lua_ls",
+                "ts_ls",
+                "volar",
+                "eslint",
                 -- "jdtls",
             },
             handlers = {
-                function(server_name) -- Automatically sets up LSP language servers with autocomplete support.
-                    lsp[server_name].setup({
-                        capabilities = require('cmp_nvim_lsp').cmp_capabilities,
-                    })
-                end,
-                ['rust_analyzer'] = function()
-                    require('rust-tools').setup()
-                end,
-                -- ["html"] = function()
-                --     lsp["html"].setup({
-                --         filetypes = {
-                --             "html",
-                --             "javascript",
-                --             "javascriptreact",
-                --             "typescript",
-                --             "typescriptreact",
-                --             "svelte",
-                --             "vue",
-                --             "rust",
-                --         },
-                --         init_options = {
-                --             userLanguages = {
-                --                 rust = "html",
-                --             },
-                --         },
-                --     })
-                -- end,
             },
         })
+
+        -- On Attach LSP bindings
         local function lsp_attach(bufnr)
             local builtin = require('telescope.builtin')
             local opts = { buffer = bufnr, remap = false }
@@ -84,13 +130,16 @@ return {
                 vim.lsp.buf.hover()
             end, opts)
             vim.keymap.set("n", "gd", function()
-                builtin.lsp_definitions({ jump_type = "never" })
+                vim.lsp.buf.definition()
+                -- builtin.lsp_definitions({ jump_type = "never" })
             end, opts)
             vim.keymap.set("n", "gi", function()
-                builtin.lsp_implementation({ jump_type = "never" })
+                vim.lsp.buf.implementation()
+                -- builtin.lsp_implementation({ jump_type = "never" })
             end, opts)
             vim.keymap.set("n", "gr", function()
-                builtin.lsp_references({ jump_type = "never" })
+                vim.lsp.buf.references()
+                -- builtin.lsp_references({ jump_type = "never" })
             end, opts)
             vim.keymap.set("n", "<C-R>", function()
                 vim.lsp.buf.rename()

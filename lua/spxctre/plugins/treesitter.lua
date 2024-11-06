@@ -4,8 +4,7 @@ return {
     event = "VeryLazy",
     config = function(_, opts)
         require('nvim-treesitter.configs').setup {
-            ensure_installed = { "c", "cpp", "c_sharp", "java", "dart", "javascript", "typescript", "lua", "vim", "vimdoc",
-                "query" },
+            ensure_installed = { "rust", "c", "cpp", "c_sharp", "java", "javascript", "typescript", "tsx", "vue", "svelte",  "lua", "json", "json5", },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,
