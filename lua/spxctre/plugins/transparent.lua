@@ -18,8 +18,11 @@ return {
     end,
     config = function(_, opts)
         require("transparent").setup(opts)
-        require("transparent").clear_prefix('lualine')
+        -- require("transparent").clear_prefix('lualine')
+        -- Allows for transparency with lualine (experimental)
 
-        vim.g.transparent_enabled = true
+        if not vim.g.neovide then
+            vim.g.transparent_enabled = true
+        end
     end
 }

@@ -16,11 +16,12 @@ return {
             },
             ignore_focus = {},
             always_divide_middle = true,
+            always_show_tabline = true,
             globalstatus = false,
             refresh = {
-                statusline = 1000,
-                tabline = 1000,
-                winbar = 1000,
+                statusline = 100,
+                tabline = 100,
+                winbar = 100,
             }
         },
         sections = {
@@ -44,5 +45,12 @@ return {
         inactive_winbar = {},
         extensions = {}
     },
-    config = true,
+    config = function (_, opts)
+        local lualine = require('lualine')
+
+        lualine.setup(opts)
+
+        vim.opt.showmode = false
+
+    end,
 }
