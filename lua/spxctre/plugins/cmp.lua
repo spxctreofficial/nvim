@@ -1,13 +1,15 @@
 return {
-    "hrsh7th/nvim-cmp",     -- LSP autocompletion.
+    "iguanacucumber/magazine.nvim",     -- LSP autocompletion.
+    name = "nvim-cmp",
     dependencies = {
         -- Autocomplete sources
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
-        "weilbith/nvim-code-action-menu",
+        { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+        { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+        { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+        { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
 
+        "https://codeberg.org/FelipeLema/cmp-async-path", -- not by me, but better than cmp-path
+        "weilbith/nvim-code-action-menu",
     },
     event = "VeryLazy",
     config = function(_, opts)
@@ -36,6 +38,10 @@ return {
             window = {
                 completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
+            },
+
+            performance = {
+                debounce = 10,
             },
 
             mapping = cmp_mappings,
