@@ -106,7 +106,11 @@ return {
                 })
             end,
             settings = {
-                Lua = {}
+                Lua = {
+                    diagnostics = {
+                        globals = { 'vim' }
+                    }
+                }
             }
         }
         mlsp.setup({
