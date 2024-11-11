@@ -3,7 +3,6 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "simrat39/rust-tools.nvim",
-        "folke/neodev.nvim",
         "mfussenegger/nvim-jdtls",
         "mason.nvim",
         "williamboman/mason-lspconfig.nvim",
@@ -13,6 +12,8 @@ return {
         local lsp = require('lspconfig')
         local mlsp = require('mason-lspconfig')
         local cmp_lsp = require('cmp_nvim_lsp')
+
+        local capabilities  = cmp_lsp.default_capabilities()
 
         -- Theming
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
@@ -44,6 +45,9 @@ return {
                 jdtls.start_or_attach(config)
             end
         })
+        lsp.rust_analyzer.setup {
+            capabilities = capabilities,
+        }
         lsp.ts_ls.setup {
             init_options = {
                 plugins = {
@@ -61,10 +65,10 @@ return {
                 'typescriptreact',
                 'vue',
             },
-            capabilities = cmp_lsp.cmp_capabilities,
+            capabilities = capabilities,
         }
         lsp.volar.setup {
-            capabilities = cmp_lsp.cmp_capabilities,
+            capabilities = capabilities,
         }
         lsp.eslint.setup {
             on_attach = function(_, bufnr)
@@ -73,11 +77,11 @@ return {
                     command = "EslintFixAll",
                 })
             end,
-            capabilities = cmp_lsp.cmp_capabilities,
+            capabilities = capabilities,
         }
 
         lsp.clangd.setup {
-            capabilities = cmp_lsp.cmp_capabilities,
+            capabilities = capabilities,
         }
 
         lsp.lua_ls.setup {
@@ -111,8 +115,10 @@ return {
                         globals = { 'vim' }
                     }
                 }
-            }
+            },
+            capabilities = capabilities
         }
+
         mlsp.setup({
             ensure_installed = {
                 "rust_analyzer",
@@ -155,7 +161,7 @@ return {
                 vim.diagnostic.goto_prev()
             end, opts)
             vim.keymap.set("n", "<leader>.", function()
-                builtin.quickfix()
+                vim.lsp.buf.code_action()
             end, opts)
             vim.keymap.set("n", "<leader>f", function()
                 vim.lsp.buf.format()
