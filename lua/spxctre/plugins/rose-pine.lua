@@ -4,7 +4,7 @@ return {
     priority = 1000,
     event = "VimEnter",
     dependencies = {
-        "xiyaowong/transparent.nvim"
+        -- "xiyaowong/transparent.nvim"
     },
     opts = {
         variant = "auto",      -- auto, main, moon, or dawn

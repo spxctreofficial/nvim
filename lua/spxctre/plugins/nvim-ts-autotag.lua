@@ -8,7 +8,7 @@ return {
         'html',
         'vue',
     },
-    event = VeryLazy,
+    event = "VeryLazy",
     config = function()
         require('nvim-ts-autotag').setup()
     end

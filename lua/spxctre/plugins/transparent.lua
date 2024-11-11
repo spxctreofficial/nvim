@@ -1,6 +1,6 @@
 return {
     "xiyaowong/transparent.nvim",
-    event = "VeryLazy",
+    event = "VimEnter",
     opts = function()
         return {
             groups = { -- table: default groups
