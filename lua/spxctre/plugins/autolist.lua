@@ -22,7 +22,7 @@ return {
             vim.keymap.set('n', 'O', 'O<cmd>AutolistNewBulletBefore<cr>', opts)
             vim.keymap.set('n', '<CR>', '<cmd>AutolistToggleCheckbox<cr>j', opts)
             vim.keymap.set('n', '<S-CR>', '<cmd>AutolistToggleCheckbox<cr>k', opts)
-            vim.keymap.set('n', '<C-r>', '<cmd>AutolistRecalculate<cr>', opts)
+            -- vim.keymap.set('n', '<C-r>', '<cmd>AutolistRecalculate<cr>', opts)
         end
         vim.api.nvim_create_autocmd('BufEnter', {
             pattern = { '*.md', '*.txt' },
