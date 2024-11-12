@@ -5,7 +5,7 @@ return {
         lsp = {
             -- override markdown rendering to use `Treesitter`
             override = {
-                ["vim.lsp.util.convert_input_to_markdown_files"] = true,
+                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
                 ["vim.lsp.util.stylize_markdown"] = true,
                 ["cmp.entry.get_documentation"] = true,
             },
@@ -27,8 +27,8 @@ return {
         require('noice').setup(opts)
         require('notify').setup({
             fps = 240,
-            timeout = 750,
-            stages = 'slide',
+            timeout = 1000,
+            stages = 'fade',
             top_down = true,
         })
     end
