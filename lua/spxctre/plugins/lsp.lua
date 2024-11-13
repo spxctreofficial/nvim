@@ -48,26 +48,28 @@ return {
         lsp.rust_analyzer.setup {
             capabilities = capabilities,
         }
-        lsp.ts_ls.setup {
-            init_options = {
-                plugins = {
-                    name = '@vue/typescript-plugin',
-                    location = '/usr/local/lib/node_modules/@vue/typescript-plugin',
-                    languages = {
-                        'vue'
-                    },
-                },
-            },
+        -- lsp.ts_ls.setup {
+        --     filetypes = {
+        --         'javascript',
+        --         'typescript',
+        --         'javascriptreact',
+        --         'typescriptreact',
+        --     },
+        --     capabilities = capabilities,
+        -- }
+        lsp.volar.setup {
             filetypes = {
-                'javascript',
                 'typescript',
+                'javascript',
                 'javascriptreact',
                 'typescriptreact',
                 'vue',
             },
-            capabilities = capabilities,
-        }
-        lsp.volar.setup {
+            init_options = {
+                vue = {
+                    hybridMode = false,
+                },
+            },
             capabilities = capabilities,
         }
         lsp.eslint.setup {
@@ -78,6 +80,9 @@ return {
                 })
             end,
             capabilities = capabilities,
+        }
+        lsp.tailwindcss.setup {
+            capabilities = capabilities
         }
 
         lsp.clangd.setup {
@@ -123,7 +128,6 @@ return {
             ensure_installed = {
                 "rust_analyzer",
                 "lua_ls",
-                "ts_ls",
                 "volar",
                 "eslint",
                 -- "jdtls",
