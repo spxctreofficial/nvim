@@ -48,30 +48,24 @@ return {
         lsp.rust_analyzer.setup {
             capabilities = capabilities,
         }
-        -- lsp.ts_ls.setup {
-        --     filetypes = {
-        --         'javascript',
-        --         'typescript',
-        --         'javascriptreact',
-        --         'typescriptreact',
-        --     },
-        --     capabilities = capabilities,
-        -- }
-        lsp.volar.setup {
+        lsp.ts_ls.setup {
             filetypes = {
-                'typescript',
                 'javascript',
+                'typescript',
                 'javascriptreact',
                 'typescriptreact',
                 'vue',
             },
-            init_options = {
-                vue = {
-                    hybridMode = false,
+            plugins = {
+                {
+                    name = '@vue/typescript-plugin',
+                    location = require('mason-registry').get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server',
+                    languages = { 'vue' },
                 },
             },
             capabilities = capabilities,
         }
+        lsp.volar.setup {}
         lsp.eslint.setup {
             on_attach = function(_, bufnr)
                 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -128,6 +122,7 @@ return {
             ensure_installed = {
                 "rust_analyzer",
                 "lua_ls",
+                "ts_ls",
                 "volar",
                 "eslint",
                 -- "jdtls",

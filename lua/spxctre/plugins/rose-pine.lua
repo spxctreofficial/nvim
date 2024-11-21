@@ -2,9 +2,8 @@ return {
     "rose-pine/neovim",     -- uwu
     name = "rose-pine",
     priority = 1000,
-    event = "VimEnter",
+    lazy = false,
     dependencies = {
-        -- "xiyaowong/transparent.nvim"
     },
     opts = {
         variant = "auto",      -- auto, main, moon, or dawn

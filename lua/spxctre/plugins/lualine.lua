@@ -2,7 +2,6 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
-        "NStefan002/screenkey.nvim",
     },
     event = "VeryLazy",
     opts = {
