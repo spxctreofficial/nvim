@@ -125,6 +125,7 @@ return {
                 "ts_ls",
                 "volar",
                 "eslint",
+                "tailwindcss",
                 -- "jdtls",
             },
             handlers = {
