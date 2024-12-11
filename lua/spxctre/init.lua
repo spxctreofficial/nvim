@@ -1,5 +1,6 @@
 require('spxctre.remap')
 require('spxctre.set')
+require('spxctre.colors')
 
 if vim.g.neovide then
     require('spxctre.neovide')
