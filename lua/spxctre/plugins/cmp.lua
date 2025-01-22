@@ -62,9 +62,12 @@ return {
         cmp.setup.cmdline(":", {
             mapping = cmp_mappings,
             sources = cmp.config.sources({
-                { name = "path" },
+                { name = "async_path" },
             }, {
-                { name = "cmdline" },
+                {
+                    name = "cmdline",
+                    keyword_pattern = [[\!\@<!\w*]]     -- Keyword pattern prevents hanging when autocompleting words starting with #!
+                },
             }),
         })
         vim.diagnostic.config({
