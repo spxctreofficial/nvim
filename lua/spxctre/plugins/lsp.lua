@@ -1,8 +1,7 @@
 return {
     "neovim/nvim-lspconfig", -- LSP Support
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "VeryLazy" }, -- loading nvim-lspconfig like this fixes blocking of initial rendering
     dependencies = {
-        "simrat39/rust-tools.nvim",
         "mfussenegger/nvim-jdtls",
         "mason.nvim",
         "williamboman/mason-lspconfig.nvim",
