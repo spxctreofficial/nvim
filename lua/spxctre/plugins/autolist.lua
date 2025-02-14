@@ -11,7 +11,7 @@ return {
     config = function()
         require("autolist").setup()
 
-        local function lsp_attach(bufnr)
+        local function bind_keys(bufnr)
             local opts = { buffer = bufnr, remap = false }
 
             vim.keymap.set('i', '<tab>', '<cmd>AutolistTab<cr>', opts)
@@ -27,7 +27,7 @@ return {
         vim.api.nvim_create_autocmd('BufEnter', {
             pattern = { '*.md', '*.txt' },
             callback = function(args)
-                lsp_attach(args.buf) -- Key mappings when an LSP is attached to a buffer.
+                bind_keys(args.buf) -- Key mappings when an LSP is attached to a buffer.
             end
         })
     end

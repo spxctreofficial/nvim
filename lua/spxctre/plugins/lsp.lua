@@ -2,8 +2,9 @@ return {
     "neovim/nvim-lspconfig", -- LSP Support
     event = { "VeryLazy" }, -- loading nvim-lspconfig like this fixes blocking of initial rendering
     dependencies = {
+        "smjonas/inc-rename.nvim",
         "mfussenegger/nvim-jdtls",
-        "mason.nvim",
+        "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp" },
     },
@@ -11,6 +12,7 @@ return {
         local lsp = require('lspconfig')
         local mlsp = require('mason-lspconfig')
         local cmp_lsp = require('cmp_nvim_lsp')
+        local inc_rename = require('inc_rename')
 
         local capabilities  = cmp_lsp.default_capabilities()
 
@@ -130,6 +132,8 @@ return {
             handlers = {
             },
         })
+
+        inc_rename.setup()
 
         -- On Attach LSP bindings
         local function lsp_attach(bufnr)
