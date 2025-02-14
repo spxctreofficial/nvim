@@ -5,7 +5,7 @@ return {
         "mfussenegger/nvim-jdtls",
         "mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "hrsh7th/cmp-nvim-lsp",
+        { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp" },
     },
     config = function(_, opts)
         local lsp = require('lspconfig')
