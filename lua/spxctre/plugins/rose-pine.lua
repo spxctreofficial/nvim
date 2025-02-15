@@ -2,7 +2,7 @@ return {
     "rose-pine/neovim",     -- uwu
     name = "rose-pine",
     priority = 1000,
-    lazy = false,
+    lazy = true,
     dependencies = {
     },
     opts = {

@@ -1,6 +1,7 @@
 return {
     "iguanacucumber/magazine.nvim",     -- LSP autocompletion.
     name = "nvim-cmp",
+    event = { "InsertEnter", "CmdlineEnter", }, -- load cmp when typing
     dependencies = {
         -- Autocomplete sources
         { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
@@ -10,7 +11,6 @@ return {
 
         "https://codeberg.org/FelipeLema/cmp-async-path", -- not by me, but better than cmp-path
     },
-    event = "VeryLazy",
     config = function(_, opts)
         local cmp = require("cmp")
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
