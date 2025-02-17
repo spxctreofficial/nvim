@@ -1,13 +1,6 @@
 return {
     "gaoDean/autolist.nvim", -- Autocomplete lists
-    ft = {
-        "markdown",
-        "text",
-        "tex",
-        "plaintex",
-        "norg",
-    },
-    lazy = true,
+    event = "VeryLazy",
     config = function()
         require("autolist").setup()
 

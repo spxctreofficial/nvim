@@ -1,7 +1,8 @@
 return {
     "lambdalisue/suda.vim",     -- Enable sudo writing permissions
-    cmd = {
-        "SudaWrite",
-        "SudaRead",
-    },
+    -- cmd = {
+    --     "SudaWrite",
+    --     "SudaRead",
+    -- },
+    event = "VeryLazy",
 }
