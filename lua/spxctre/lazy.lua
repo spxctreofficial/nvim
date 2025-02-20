@@ -10,4 +10,3 @@ local opts = {
 }
 
 lazy.setup("spxctre/plugins", opts)
-vim.cmd.colorscheme("rose-pine")

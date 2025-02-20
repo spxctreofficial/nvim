@@ -1,6 +1,7 @@
 return {
     "xiyaowong/transparent.nvim",
     lazy = false,
+    enabled = false,
     opts = function()
         return {
             groups = { -- table: default groups
