@@ -1,6 +1,5 @@
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.3",
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
@@ -15,6 +14,9 @@ return {
         end, {})
         vim.keymap.set('n', '<leader>ps', function()
             builtin.live_grep() -- requires ripgrep package to be installed, use `checkhealth telescope`
+        end)
+        vim.keymap.set('n', '<leader>pc', function()
+            builtin.colorscheme()
         end)
     end,
 }
