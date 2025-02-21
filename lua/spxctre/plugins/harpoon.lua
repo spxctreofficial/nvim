@@ -23,7 +23,7 @@ return {
         }
 
         vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-        vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts) end)
+        vim.keymap.set("n", "<C-E>", function() harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts) end)
     end
 
 }

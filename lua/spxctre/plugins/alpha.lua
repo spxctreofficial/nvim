@@ -1,7 +1,7 @@
 return {
     "goolord/alpha-nvim",
     lazy = false,
-    config = function(_, unused_opts)
+    config = function()
         local alpha = require('alpha')
 
         local if_nil = vim.F.if_nil
@@ -105,7 +105,7 @@ return {
             type = "group",
             val = {
                 -- button("e", "  New file", "<cmd>ene <CR>"),
-                button("<leader>pv", "  netrw - File Explorer"),
+                button("<leader>pv", "  ".. (require("lazy.core.config").spec.plugins["oil"] == nil and "oil.nvim" or "netrw") .." - File Explorer"),
                 button("<leader>pf", "󰈞  Telescope - Find Files"),
                 -- button("SPC f h", "󰊄  Recently opened files"),
                 -- button("SPC f r", "  Frecency/MRU"),
@@ -146,9 +146,14 @@ return {
 
         -- Keybindings to switch to and from netrw
         vim.api.nvim_create_autocmd({ 'BufEnter', 'filetype' }, {
-            pattern = 'netrw',
+            pattern = { 'netrw', 'oil' } ,
             callback = function(args)
                 local function quit()
+                    if vim.api.nvim_win_get_config(vim.api.nvim_get_current_win()).relative ~= '' then
+                        vim.api.nvim_win_close(vim.api.nvim_get_current_win(), false)       -- If explorer is open in a floating window, just close the floating window
+                        return
+                    end
+
                     vim.cmd.bd(args.buf)
                     vim.cmd.Alpha()
                 end
@@ -159,17 +164,17 @@ return {
                 vim.keymap.set('n', '<leader>q', quit, opts)
             end
         })
-        vim.api.nvim_create_autocmd({ 'BufEnter', 'filetype' }, {
-            pattern  = 'alpha',
-            callback = function(args)
-                local function enter()
-                    vim.cmd.bd(args.buf)
-                    vim.cmd.Ex()
-                end
-                local opts = { buffer = args.buf, remap = false }
-
-                vim.keymap.set({ 'n', 't' }, '<leader>pv', enter, opts)
-            end
-        })
+        -- vim.api.nvim_create_autocmd({ 'BufEnter', 'filetype' }, {
+        --     pattern  = 'alpha',
+        --     callback = function(args)
+        --         local function enter()
+        --             vim.cmd.bd(args.buf)
+        --             vim.api.nvim_feedkeys('<leader>pv', 'i', false)
+        --         end
+        --         local opts = { buffer = args.buf, remap = true }
+        --
+        --         vim.keymap.set({ 'n', 't' }, '<leader>pv', enter, opts)
+        --     end
+        -- })
     end
 }
