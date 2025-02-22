@@ -26,3 +26,6 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 -- vim.opt.colorcolumn = "80"
+vim.opt.laststatus = 0
+vim.cmd.hi("NonText guifg=bg")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

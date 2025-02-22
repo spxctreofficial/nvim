@@ -6,6 +6,7 @@ return {
             lazy = true,
         },
     },
+    event = "VeryLazy",
     opts = {
         options = {
             icons_enabled = true,
@@ -50,13 +51,12 @@ return {
         inactive_winbar = {},
         extensions = {}
     },
-    lazy = false,
     config = function(_, opts)
         local lualine = require('lualine')
 
         lualine.setup(opts)
-        -- lualine.hide()
 
         vim.opt.showmode = false
+        vim.opt.laststatus = 2
     end,
 }
