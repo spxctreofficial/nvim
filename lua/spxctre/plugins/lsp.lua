@@ -1,20 +1,14 @@
 return {
     "neovim/nvim-lspconfig", -- LSP Support
-    event = { "VeryLazy" }, -- loading nvim-lspconfig like this fixes blocking of initial rendering
+    event = { "VeryLazy" },  -- loading nvim-lspconfig like this fixes blocking of initial rendering
     dependencies = {
         "smjonas/inc-rename.nvim",
         "mfussenegger/nvim-jdtls",
         "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp" },
+        "saghen/blink.cmp",
     },
-    config = function(_, opts)
+    config = function()
         local lsp = require('lspconfig')
-        local mlsp = require('mason-lspconfig')
-        local cmp_lsp = require('cmp_nvim_lsp')
-        local inc_rename = require('inc_rename')
-
-        local capabilities  = cmp_lsp.default_capabilities()
 
         -- Theming
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
@@ -34,6 +28,8 @@ return {
         })
 
         -- Language Servers
+        local capabilities = require('blink.cmp').get_lsp_capabilities()
+
         vim.api.nvim_create_autocmd("FileType", {
             pattern = "java",
             callback = function()
@@ -88,7 +84,7 @@ return {
             on_init = function(client)
                 if client.workspace_folders then
                     local path = client.workspace_folders[1].name
-                    if vim.uv.fs_stat(path..'/.luarc.json') or vim.uv.fs_stat(path..'/.luarc.jsonc') then
+                    if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
                         return
                     end
                 end
@@ -119,21 +115,8 @@ return {
             capabilities = capabilities
         }
 
-        mlsp.setup({
-            ensure_installed = {
-                "rust_analyzer",
-                "lua_ls",
-                "ts_ls",
-                "volar",
-                "eslint",
-                "tailwindcss",
-                -- "jdtls",
-            },
-            handlers = {
-            },
-        })
-
-        inc_rename.setup()
+        -- vscode-like refactoring
+        require('inc_rename').setup()
 
         -- On Attach LSP bindings
         local function lsp_attach(bufnr)

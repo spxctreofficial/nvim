@@ -66,6 +66,8 @@ return {
         NormalFloat = { bg = "base" },
         FloatBorder = { bg = "base" },
         TelescopeBorder = { bg = "base" },
+        BlinkCmpMenu = { bg = "base" },
+        BlinkCmpMenuBorder = { bg = "base" },
     },
 
     before_highlight = function(group, highlight, palette)
