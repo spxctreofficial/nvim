@@ -1,10 +1,10 @@
+local lib = require('spxctre.lib')
 return {
     "neovim/nvim-lspconfig", -- LSP Support
     event = { "VeryLazy" },  -- loading nvim-lspconfig like this fixes blocking of initial rendering
     dependencies = {
         "smjonas/inc-rename.nvim",
         "mfussenegger/nvim-jdtls",
-        "williamboman/mason.nvim",
         "saghen/blink.cmp",
     },
     config = function()
@@ -56,7 +56,7 @@ return {
             plugins = {
                 {
                     name = '@vue/typescript-plugin',
-                    location = require('mason-registry').get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server',
+                    location =  lib.get_node_modules_path() .. '/@vue/language-server',
                     languages = { 'vue' },
                 },
             },

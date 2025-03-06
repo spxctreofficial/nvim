@@ -9,4 +9,4 @@ local opts = {
     ui = { border = "rounded" }
 }
 
-lazy.setup("spxctre/plugins", opts)
+lazy.setup("spxctre.plugins", opts)
