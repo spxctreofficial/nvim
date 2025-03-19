@@ -19,3 +19,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('spxctre.lazy')
+require('spxctre.floatterm')
