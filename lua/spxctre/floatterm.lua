@@ -51,3 +51,4 @@ end
 
 vim.api.nvim_create_user_command("FloatTerm", toggle_terminal, {})
 vim.keymap.set({ "n", "t" }, "<leader><Bslash>", toggle_terminal)
+vim.keymap.set("t", "<esc><esc>", "<C-Bslash><C-n>")
