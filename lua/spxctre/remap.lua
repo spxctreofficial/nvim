@@ -23,22 +23,11 @@ vim.keymap.set("n", "}", "}zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- Why the fuck is Shift-Enter random by default
-vim.keymap.set('n', '<S-CR>', 'k')
-
--- Insert a new line without entering insert mode
-vim.keymap.set('n', '<leader><CR>', 'o<Esc>')
-vim.keymap.set('n', '<leader><S-CR>', 'O<Esc>')
-
 -- Write-quit to netrw instead of exiting neovim
 vim.keymap.set("n", "<leader>w", function()
     vim.cmd.w();
     vim.cmd.Ex();
 end)
-
--- Switching tabs
-vim.keymap.set('n', '<leader><Tab>', 'gt')
-vim.keymap.set('n', '<leader><S-Tab>', 'gT')
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])

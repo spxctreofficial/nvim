@@ -27,3 +27,10 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 -- vim.opt.colorcolumn = "80"
 vim.opt.laststatus = 0
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+    pattern = { "*.txt" },
+    callback = function()
+        if vim.o.filetype == "help" then vim.cmd.wincmd("L") end
+    end
+})
