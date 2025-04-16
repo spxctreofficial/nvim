@@ -11,21 +11,36 @@ return {
         local lsp = require('lspconfig')
 
         -- Theming
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-            vim.lsp.handlers.hover, {
+        -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+        --     vim.lsp.handlers.hover, {
+        --         border = "rounded"
+        --     }
+        -- )
+        -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+        --     vim.lsp.handlers.signature_help, {
+        --         border = "rounded"
+        --     }
+        -- )
+        -- vim.diagnostic.config({
+        --     float = {
+        --         border = "rounded"
+        --     }
+        -- })
+
+        local hover = vim.lsp.buf.hover
+        ---@diagnostic disable-next-line: duplicate-set-field
+        vim.lsp.buf.hover = function()
+            return hover({
                 border = "rounded"
-            }
-        )
-        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-            vim.lsp.handlers.signature_help, {
+            })
+        end
+        local signature_help = vim.lsp.buf.signature_help
+        ---@diagnostic disable-next-line: duplicate-set-field
+        vim.lsp.buf.signature_help = function()
+            return signature_help({
                 border = "rounded"
-            }
-        )
-        vim.diagnostic.config({
-            float = {
-                border = "rounded"
-            }
-        })
+            })
+        end
 
         -- Language Servers
         local capabilities = require('blink.cmp').get_lsp_capabilities()
