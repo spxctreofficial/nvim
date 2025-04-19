@@ -9,7 +9,7 @@ return {
         sync_scroll = true,
         picker = "telescope",
     },
-    config = function(opts)
+    config = function(_, opts)
         require("livepreview.config").set(opts)
     end
 }

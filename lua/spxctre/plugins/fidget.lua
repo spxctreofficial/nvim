@@ -3,7 +3,5 @@ return {
     event = "VeryLazy",
     opts = {
     },
-    config = function(_)
-        require('fidget').setup()
-    end
+    config = true
 }

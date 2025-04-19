@@ -9,7 +9,5 @@ return {
         'vue',
     },
     event = "VeryLazy",
-    config = function()
-        require('nvim-ts-autotag').setup()
-    end
+    config = true
 }

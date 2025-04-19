@@ -11,7 +11,7 @@ return {
             },
         },
     },
-    config = function(opts)
+    config = function(_, opts)
         require('render-markdown').setup(opts)
     end
 }

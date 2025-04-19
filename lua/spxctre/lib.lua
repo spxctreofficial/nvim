@@ -12,6 +12,14 @@ function M.exists(file)
     return ok, err
 end
 
+function M.list_dir(path)
+    if M.get_os() == 'Windows_NT' then
+        return io.popen('cd \"' .. path .. '\" && dir /b'):lines()
+    else
+        return io.popen('cd ' .. path .. ' && ls'):lines()
+    end
+end
+
 function M.get_os()
     return vim.uv.os_uname().sysname
 end
