@@ -7,12 +7,12 @@ local function guifont_refresh()
     vim.opt.guifont = string.format("%s:h%s", vim.g.guifont_face, vim.g.guifont_size)
 end
 
-function guifont_resize(delta)
+local function guifont_resize(delta)
     vim.g.guifont_size = vim.g.guifont_size + delta
     guifont_refresh()
 end
 
-function guifont_reset()
+local function guifont_reset()
     vim.g.guifont_size = vim.g.guifont_default_size
     guifont_refresh()
 end

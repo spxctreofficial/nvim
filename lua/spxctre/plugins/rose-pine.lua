@@ -2,7 +2,7 @@ return {
     "rose-pine/neovim", -- uwu
     name = "rose-pine",
     priority = 1000,
-    lazy = false,
+    event = "UIEnter",
     opts = {
         variant = "auto",  -- auto, main, moon, or dawn
         dark_variant = "main", -- main, moon, or dawn

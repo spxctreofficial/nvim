@@ -1,6 +1,7 @@
 return {
     "goolord/alpha-nvim",
-    lazy = false,
+    event = "UIEnter",
+    -- lazy = false,
     config = function()
         local alpha = require('alpha')
 
@@ -143,6 +144,7 @@ return {
         }
 
         alpha.setup(config)
+        vim.cmd.Alpha()
 
         -- Keybindings to switch to and from netrw
         vim.api.nvim_create_autocmd({ 'BufEnter', 'filetype' }, {

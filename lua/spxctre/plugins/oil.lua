@@ -207,7 +207,8 @@ return {
             border = "rounded",
         },
     },
-    lazy = false,
+    event = "UIEnter",
+    -- lazy = false,
     config = function(_, opts)
         local oil = require('oil')
         oil.setup(opts)
