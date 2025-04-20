@@ -21,12 +21,14 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
+-- vim.opt.signcolumn = "yes"
+vim.opt.fillchars:append('eob: ')
 vim.opt.isfname:append("@-@")
+vim.opt.laststatus = 0
+vim.opt.ruler = false
 
 vim.opt.updatetime = 50
 -- vim.opt.colorcolumn = "80"
-vim.opt.laststatus = 0
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     pattern = { "*.txt" },

@@ -25,9 +25,9 @@ return {
             always_show_tabline = true,
             globalstatus = false,
             refresh = {
-                statusline = 100,
-                tabline = 100,
-                winbar = 100,
+                statusline = 10,
+                tabline = 10,
+                winbar = 10,
             }
         },
         sections = {
@@ -49,13 +49,10 @@ return {
         tabline = {},
         winbar = {},
         inactive_winbar = {},
-        extensions = {}
+        extensions = { 'oil', 'lazy' }
     },
     config = function(_, opts)
-        local lualine = require('lualine')
-
-        lualine.setup(opts)
-
+        require('lualine').setup(opts)
         vim.opt.showmode = false
         vim.opt.laststatus = 2
     end,
