@@ -1,4 +1,15 @@
-local M = {}
+local M = {
+    colorscheme_hl_groups = {}
+}
+
+function M.set(colorscheme, hl_group)
+    vim.cmd.colorscheme(colorscheme)
+    if hl_group ~= nil then
+        M.update_hl(hl_group)
+    elseif M.colorscheme_hl_groups[colorscheme] ~= nil then
+        M.update_hl(M.colorscheme_hl_groups[colorscheme])
+    end
+end
 
 function M.update_hl(hl_groups)
     for _, hl_group_group in ipairs(hl_groups) do

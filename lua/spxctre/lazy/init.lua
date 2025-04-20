@@ -24,7 +24,11 @@ local opts = {
     },
     defaults = { lazy = true },
     checker = { enabled = true },
-    ui = { border = "rounded" }
+    ui = {
+        title = "Lazy.nvim",
+        backdrop = 100,
+        border = "rounded"
+    }
 }
 
 require('lazy').setup(opts)

@@ -79,26 +79,26 @@ return {
     config = function(_, opts)
         require('rose-pine').setup(opts)
 
-        vim.cmd.colorscheme('rose-pine')
-
         local palette = require('rose-pine.palette')
         local color = require('spxctre.color')
 
         local hl_groups = {
             {
-                groups = { '@property', '@variable', '@variable.parameter', '@variable.builtin', '@variable.parameter.builtin', '@parameter', '@lsp' },
+                groups = { 'Comment', '@property', '@variable', '@variable.parameter', '@variable.builtin', '@variable.parameter.builtin', '@parameter', '@lsp' },
                 opts = {
                     italic = false,
                 },
             },
             {
-                groups = { 'NormalFloat', 'FloatBorder', 'TelescopeBorder', 'BlinkCmpMenu', 'BlinkCmpMenuBorder' },
+                groups = { 'NormalFloat', 'FloatBorder', 'FloatTitle', 'TelescopeBorder', 'BlinkCmpMenu', 'BlinkCmpMenuBorder', },
                 opts = {
                     bg = palette.base
                 },
             },
         }
 
-        color.update_hl(hl_groups)
+        color.colorscheme_hl_groups['rose-pine-main'] = hl_groups
+
+        color.set('rose-pine', hl_groups)
     end
 }
