@@ -24,15 +24,7 @@ vim.opt.scrolloff = 8
 -- vim.opt.signcolumn = "yes"
 vim.opt.fillchars:append('eob: ')
 vim.opt.isfname:append("@-@")
-vim.opt.laststatus = 0
 vim.opt.ruler = false
 
 vim.opt.updatetime = 50
 -- vim.opt.colorcolumn = "80"
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-    pattern = { "*.txt" },
-    callback = function()
-        if vim.o.filetype == "help" then vim.cmd.wincmd("L") end
-    end
-})

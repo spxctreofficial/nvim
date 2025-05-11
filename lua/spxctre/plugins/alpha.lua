@@ -140,6 +140,7 @@ return {
             },
             opts = {
                 margin = 5,
+                noautocmd = false,
             },
         }
 

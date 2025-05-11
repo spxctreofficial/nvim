@@ -54,6 +54,6 @@ return {
     config = function(_, opts)
         require('lualine').setup(opts)
         vim.opt.showmode = false
-        vim.opt.laststatus = 2
+        vim.opt.laststatus = 0
     end,
 }
