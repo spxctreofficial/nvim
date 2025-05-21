@@ -35,13 +35,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<leader>r", function()
             return ":IncRename " .. vim.fn.expand("<cword>")
         end, { buffer = args.buf, remap = false, expr = true })
-        vim.keymap.set("n", "<leader>j", function()
+        vim.keymap.set("n", "g]", function()
             vim.diagnostic.jump({
                 count = 1,
                 float = true,
             })
         end, opts)
-        vim.keymap.set("n", "<leader>k", function()
+        vim.keymap.set("n", "g[", function()
             vim.diagnostic.jump({
                 count = -1,
                 float = true,
