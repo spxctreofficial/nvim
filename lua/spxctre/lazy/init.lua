@@ -23,7 +23,7 @@ local opts = {
         colorscheme = { "rose-pine" },
     },
     defaults = { lazy = true },
-    checker = { enabled = true },
+    checker = { enabled = false },
     ui = {
         title = "Lazy.nvim",
         backdrop = 100,
