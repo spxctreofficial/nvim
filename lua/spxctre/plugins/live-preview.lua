@@ -5,7 +5,7 @@ return {
     opts = {
         port = 5500,
         browser = "default",
-        dyanmic_root = false,
+        dynamic_root = false,
         sync_scroll = true,
         picker = "telescope",
     },
