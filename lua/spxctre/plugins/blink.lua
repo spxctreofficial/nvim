@@ -42,8 +42,6 @@ return {
             enabled = true,
             trigger = {
                 enabled = true,
-                show_on_keyword = true,
-                show_on_insert = true,
             },
             window = {
                 border = 'rounded',
