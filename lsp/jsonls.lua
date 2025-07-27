@@ -23,7 +23,7 @@ return {
                   url = 'https://json.schemastore.org/package.json',
               },
               {
-                  fileMatch = { 'tsconfig.json' },
+                  fileMatch = { 'tsconfig.json', 'tsconfig.app.json', 'tsconfig.node.json' },
                   url = 'https://json.schemastore.org/tsconfig',
               },
           },

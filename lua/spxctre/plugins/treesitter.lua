@@ -3,7 +3,7 @@ return {
     build = ":TSUpdate",
     event = "VeryLazy",
     opts = {
-        ensure_installed = { 'c', 'cpp', 'rust', 'markdown', 'javascript', 'typescript', 'json' },
+        ensure_installed = { 'c', 'cpp', 'rust', 'markdown', 'javascript', 'typescript', 'tsx', 'json' },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
