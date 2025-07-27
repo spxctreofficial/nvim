@@ -1,6 +1,5 @@
 return {
     "gaoDean/autolist.nvim",
-    event = "VeryLazy",
     ft = "markdown",
     config = function()
         require("autolist").setup() 
