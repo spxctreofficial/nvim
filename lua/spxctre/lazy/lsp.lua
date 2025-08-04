@@ -10,7 +10,10 @@ vim.lsp.config('*', {
 })
 
 vim.diagnostic.config({
-    virtual_text = true
+    virtual_text = true,
+    float = {
+        border = 'rounded'
+    }
 })
 
 for path in require('spxctre.lib').list_dir((vim.fn.stdpath('config') .. '/lsp')) do
@@ -21,7 +24,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
         local opts = { buffer = args.buf, remap = false }
         vim.keymap.set("n", "K", function()
-            vim.lsp.buf.hover()
+            vim.lsp.buf.hover({
+                border = 'rounded',
+                close_events = { 'BufLeave', 'BufEnter', 'CursorMoved', 'CursorMovedI' }
+            })
         end, opts)
         vim.keymap.set("n", "gd", function()
             vim.lsp.buf.definition()

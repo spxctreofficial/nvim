@@ -10,6 +10,17 @@ return {
                 enabled = true,
             },
         },
+        overrides = {
+            buflisted = {},
+            buftype = {
+                nofile = {
+                    code = {
+                        highlight = 'NormalFloat',
+                        highlight_border = 'FloatBorder',
+                    }
+                }
+            }
+        }
     },
     config = function(_, opts)
         require('render-markdown').setup(opts)
