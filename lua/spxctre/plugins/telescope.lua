@@ -175,5 +175,9 @@ return {
             clear()
             colorscheme()
         end)
+        vim.keymap.set('n', '<leader>pt', function()
+            clear()
+            builtin.lsp_document_symbols({ symbols = { "function", "method" } })
+        end)
     end,
 }
