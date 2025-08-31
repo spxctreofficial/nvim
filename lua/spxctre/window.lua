@@ -17,3 +17,10 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
         if vim.o.filetype == "help" then vim.cmd.wincmd("L") end
     end
 })
+
+vim.api.nvim_create_autocmd('filetype', {
+    pattern = require("spxctre.plugins.treesitter").opts.parsers,
+    callback = function()
+        vim.treesitter.start()
+    end,
+})
