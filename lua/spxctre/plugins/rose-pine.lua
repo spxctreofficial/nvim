@@ -173,6 +173,20 @@ return {
                 },
             },
         }
+        color.colorscheme_hl_groups['rose-pine-dawn'] = {
+            {
+                groups = { 'Comment', '@property', '@variable', '@variable.parameter', '@variable.builtin', '@variable.parameter.builtin', '@parameter', '@lsp' },
+                opts = {
+                    italic = false,
+                },
+            },
+            {
+                groups = { 'NormalFloat', 'FloatBorder', 'FloatTitle', 'TelescopeBorder', 'BlinkCmpMenu', 'BlinkCmpMenuBorder', 'LspFloatWinNormal', 'LspFloatWinBorder' },
+                opts = {
+                    bg = variants.dawn.base
+                },
+            },
+        }
 
         color.set('rose-pine-main')
     end
