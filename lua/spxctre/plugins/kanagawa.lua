@@ -150,7 +150,7 @@ return {
                 }
             },
             {
-                groups = { "BlinkCmpMenuSelection", "TelescopeSelectionCaret" },
+                groups = { "TelescopeSelection", "BlinkCmpMenuSelection", "TelescopeSelectionCaret" },
                 opts = {
                     bg = palette.sumiInk5,
                     link = ""
@@ -164,7 +164,13 @@ return {
                 },
             },
             {
-                groups = { 'NormalFloat', 'FloatBorder', 'FloatTitle', 'TelescopeBorder', 'BlinkCmpMenu', 'BlinkCmpMenuBorder', 'LspFloatWinNormal', 'LspFloatWinBorder' },
+                groups = "PmenuThumb",
+                opts = {
+                    bg = palette.katanaGray
+                },
+            },
+            {
+                groups = { 'NormalFloat', 'FloatBorder', 'FloatTitle', 'TelescopeBorder', 'BlinkCmpMenu', 'BlinkCmpMenuBorder', 'LspFloatWinNormal', 'LspFloatWinBorder', 'CursorLineNr', 'LineNr' },
                 opts = {
                     bg = palette.sumiInk3,
                     link = ""
