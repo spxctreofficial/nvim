@@ -53,9 +53,9 @@ local function colorscheme(opts)
         end, colors)
     end
 
-    -- ignore default rose-pine colorscheme
+    -- ignore default custom colorschemes; pick from variants only
     colors = vim.tbl_filter(function(_color)
-        return not vim.tbl_contains({ "rose-pine" }, _color)
+        return not vim.tbl_contains(color.installed, _color)
     end, colors)
 
     local previewer
@@ -184,6 +184,10 @@ return {
                 ignore_builtins = false,
                 enable_preview = true,
             })
+        end)
+        vim.keymap.set('n', '<leader>pi', function()
+            clear()
+            builtin.highlights()
         end)
         vim.keymap.set('n', '<leader>pt', function()
             clear()

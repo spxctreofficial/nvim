@@ -1,4 +1,5 @@
 local M = {
+    installed = {},
     colorscheme_hl_groups = {}
 }
 

@@ -188,6 +188,6 @@ return {
             },
         }
 
-        color.set('rose-pine-main')
+        table.insert(color.installed, 'rose-pine')
     end
 }
