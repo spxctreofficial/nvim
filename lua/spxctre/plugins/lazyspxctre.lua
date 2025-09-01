@@ -2,6 +2,7 @@ return {
     name = "lazyspxctre",
     dir = vim.fn.stdpath('config'),
     event = "VeryLazy",
+    priority = 100,
     config = function()
         if vim.g.neovide then
             require('spxctre.lazy.neovide')
