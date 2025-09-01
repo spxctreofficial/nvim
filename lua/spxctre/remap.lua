@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", function() vim.cmd.Ex() end)
+vim.keymap.set("n", "<leader>pd", ":lcd " .. vim.fn.getcwd() .. "/")
+vim.keymap.set("n", "<leader>pe", ":Oil --float " .. vim.fn.getcwd() .. "/")
 
 -- Moving selected line
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -24,12 +26,13 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<leader>P", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+-- delete into the _ register (do not cut)
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("i", "<F13>", "<Esc>") -- This is going to get be cancelled harder, I barely even use it

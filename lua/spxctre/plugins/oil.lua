@@ -55,9 +55,9 @@ return {
         },
         -- Constrain the cursor to the editable parts of the oil buffer
         -- Set to `false` to disable, or "name" to keep it on the file names
-        constrain_cursor = "editable",
+        constrain_cursor = "name",
         -- Set to true to watch the filesystem for changes and reload oil
-        watch_for_changes = false,
+        watch_for_changes = true,
         -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
         -- options with a `callback` (e.g. { callback = function() ... end, desc = "", mode = "n" })
         -- Additionally, if it is a string that matches "actions.<name>",
@@ -141,7 +141,7 @@ return {
             -- optionally override the oil buffers window title with custom function: fun(winid: integer): string
             get_win_title = nil,
             -- preview_split: Split direction: "auto", "left", "right", "above", "below".
-            preview_split = "auto",
+            preview_split = "right",
             -- This is the config that will be passed to nvim_open_win.
             -- Change values here to customize the layout
             override = function(conf)
