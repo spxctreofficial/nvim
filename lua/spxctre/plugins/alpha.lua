@@ -30,7 +30,7 @@ return {
             },
             opts = {
                 position = "center",
-                hl = "@method",
+                hl = "@keyword.operator",
                 -- wrap = "overflow";
             },
         }
@@ -56,7 +56,7 @@ return {
             },
             opts = {
                 position = "center",
-                hl = "@method",
+                hl = "@keyword.operator",
                 -- wrap = "overflow";
             },
         }
@@ -80,9 +80,9 @@ return {
                 shortcut = sc,
                 cursor = 3,
                 width = 50,
-                hl = "@Define",
+                hl = "Boolean",
                 align_shortcut = "right",
-                hl_shortcut = "ErrorMsg",
+                hl_shortcut = "CursorLineNr",
             }
             if keybind then
                 keybind_opts = if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })

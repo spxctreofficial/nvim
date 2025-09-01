@@ -136,12 +136,6 @@ return {
         }
 
         color.colorscheme_hl_groups['kanagawa-wave'] = {
-            -- {
-            --     groups = { 'Comment', '@property', '@variable', '@variable.parameter', '@variable.builtin', '@variable.parameter.builtin', '@parameter', '@lsp' },
-            --     opts = {
-            --         italic = false,
-            --     },
-            -- },
             {
                 groups = { "BlinkCmpLabelMatch", "TelescopeMatching", "TelescopeSelectionCaret" },
                 opts = {
@@ -177,8 +171,45 @@ return {
                 },
             },
         }
+
+        color.colorscheme_hl_groups['kanagawa-dragon'] = {
+            {
+                groups = { "BlinkCmpLabelMatch", "TelescopeMatching", "TelescopeSelectionCaret" },
+                opts = {
+                    fg = "#ff9e3b",
+                    link = ""
+                }
+            },
+            {
+                groups = { "TelescopeSelection", "BlinkCmpMenuSelection", "TelescopeSelectionCaret" },
+                opts = {
+                    bg = palette.dragonBlack5,
+                    link = ""
+                },
+            },
+            {
+                groups = { "BlinkCmpMenuBorder", "TelescopeBorder" },
+                opts = {
+                    fg = palette.dragonBlack6,
+                    link = ""
+                },
+            },
+            {
+                groups = "PmenuThumb",
+                opts = {
+                    bg = palette.sumiInk6
+                },
+            },
+            {
+                groups = { 'NormalFloat', 'FloatBorder', 'FloatTitle', 'TelescopeBorder', 'BlinkCmpMenu', 'BlinkCmpMenuBorder', 'LspFloatWinNormal', 'LspFloatWinBorder', 'CursorLineNr', 'LineNr' },
+                opts = {
+                    bg = palette.dragonBlack3,
+                    link = ""
+                },
+            },
+        }
         table.insert(require('spxctre.color').installed, 'kanagawa')
 
-        color.set("kanagawa-wave")
+        color.set("kanagawa-dragon")
     end
 }
