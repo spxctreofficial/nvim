@@ -24,3 +24,15 @@ vim.api.nvim_create_autocmd('filetype', {
         vim.treesitter.start()
     end,
 })
+
+local M = {}
+
+function M.clear()
+    -- Force closes any other active floating window
+    if vim.api.nvim_win_get_config(vim.api.nvim_get_current_win()).relative ~= '' then
+        vim.api.nvim_win_close(
+            vim.api.nvim_get_current_win(), false)
+    end
+end
+
+return M

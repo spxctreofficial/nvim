@@ -153,44 +153,36 @@ return {
     },
     event = "VeryLazy",
     config = function()
+        local window = require('spxctre.window')
 
         local builtin = require('telescope.builtin')
 
-
-        local function clear()
-            -- Force closes any other active floating window
-            if vim.api.nvim_win_get_config(vim.api.nvim_get_current_win()).relative ~= '' then
-                vim.api.nvim_win_close(
-                    vim.api.nvim_get_current_win(), false)
-            end
-        end
-
         vim.keymap.set('n', '<leader>pf', function()
-            clear()
+            window.clear()
             builtin.find_files()
         end, {})
         vim.keymap.set('n', '<C-p>', function()
-            clear()
+            window.clear()
             builtin.find_files()
             vim.api.nvim_feedkeys('<Esc>', 'i', false)
         end, {})
         vim.keymap.set('n', '<leader>ps', function()
-            clear()
+            window.clear()
             builtin.live_grep() -- requires ripgrep package to be installed, use `checkhealth telescope`
         end)
         vim.keymap.set('n', '<leader>pc', function()
-            clear()
+            window.clear()
             colorscheme({
                 ignore_builtins = false,
                 enable_preview = true,
             })
         end)
         vim.keymap.set('n', '<leader>pi', function()
-            clear()
+            window.clear()
             builtin.highlights()
         end)
         vim.keymap.set('n', '<leader>pt', function()
-            clear()
+            window.clear()
             builtin.lsp_document_symbols({ symbols = { "function", "method" } })
         end)
     end,

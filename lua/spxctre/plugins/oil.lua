@@ -211,8 +211,16 @@ return {
     -- lazy = false,
     config = function(_, opts)
         local oil = require('oil')
+        local window = require('spxctre.window')
         oil.setup(opts)
+
+        local function open()
+            window.clear()
+            vim.api.nvim_feedkeys(":Oil --float " .. vim.fn.getcwd() .. "/", "n", false)
+        end
+
         vim.keymap.set("n", "<leader>pv", oil.toggle_float, { remap = true, desc = "Oil (parent directory)" })
+        vim.keymap.set("n", "<leader>pe", open)
         -- vim.keymap.set("n", "<leader>e", oil.toggle_float, { remap = true, desc = "Oil floating (parent directory)", })
     end
 }
