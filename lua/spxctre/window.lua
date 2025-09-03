@@ -18,13 +18,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     end
 })
 
-vim.api.nvim_create_autocmd('filetype', {
-    pattern = require("spxctre.plugins.treesitter").opts.parsers,
-    callback = function()
-        vim.treesitter.start()
-    end,
-})
-
 local M = {}
 
 function M.clear()
