@@ -42,7 +42,7 @@ local toggle_terminal = function()
     if not vim.api.nvim_win_is_valid(state.floating.win) then
         state.floating = create_floating_window({buf = state.floating.buf })
         if vim.bo[state.floating.buf].buftype ~= "terminal" then
-            vim.cmd.term("nu")
+            vim.cmd.term()
         end
     else
         vim.api.nvim_win_hide(state.floating.win)
@@ -50,5 +50,5 @@ local toggle_terminal = function()
 end
 
 vim.api.nvim_create_user_command("FloatTerm", toggle_terminal, {})
-vim.keymap.set({ "n", "t" }, "<leader><Bslash>", toggle_terminal)
+vim.keymap.set("n", "<leader><Bslash>", toggle_terminal)
 vim.keymap.set("t", "<esc><esc>", "<C-Bslash><C-n>")
