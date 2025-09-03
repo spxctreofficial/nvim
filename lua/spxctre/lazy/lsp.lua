@@ -1,3 +1,4 @@
+vim.g.hare_recommended_style = false
 vim.lsp.config('*', {
     capabilities = {
         textDocument = {
