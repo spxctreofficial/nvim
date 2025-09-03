@@ -31,7 +31,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
             })
         end, opts)
         vim.keymap.set("n", "gd", function()
-            vim.lsp.buf.definition()
+            if vim.bo.filetype == 'tex' then
+                require('knap').forward_jump()
+            else
+                vim.lsp.buf.definition()
+            end
         end, opts)
         vim.keymap.set("n", "gi", function()
             vim.lsp.buf.implementation()
